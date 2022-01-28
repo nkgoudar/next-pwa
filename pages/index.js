@@ -46,8 +46,7 @@ const Home = (props) => {
   return (
     <>
     <Head>
-    {/* <link rel="manifest" id="manifest" href={props.hi} /> */}
-    <link href="data:application/json;charset=utf-8,%7B%22name%22%3A%22TEST%20PWA%202%22%2C%22short_name%22%3A%22TES%22%2C%22theme_color%22%3A%22%23ffffff%22%2C%22background_color%22%3A%22%23004740%22%2C%22display%22%3A%22fullscreen%22%2C%22orientation%22%3A%22portrait%22%2C%22scope%22%3A%22%2F%22%2C%22start_url%22%3A%22%2F%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22icons%2Ficon-192x192.png%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fpng%22%7D%2C%7B%22src%22%3A%22icons%2Ficon-384x384.png%22%2C%22sizes%22%3A%22384x384%22%2C%22type%22%3A%22image%2Fpng%22%7D%2C%7B%22src%22%3A%22icons%2Ficon-512x512.png%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%2C%22splash_pages%22%3Anull%7D" rel="manifest"></link>
+    <link rel="manifest" id="manifest" href="/manifest.json" />
     </Head>
     <div className="App">
       <header className="App-header">
