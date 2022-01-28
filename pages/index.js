@@ -8,6 +8,41 @@ const Home = (props) => {
   const [installable, setInstallable] = useState(false);
 
   useEffect(() => {
+    const manifestJson = {
+      name: "TEST PWA 2",
+      short_name: "TES",
+      theme_color: "#ffffff",
+      background_color: "#004740",
+      display: "fullscreen",
+      orientation: "portrait",
+      scope: "https://next-pwa.herokuapp.com",
+      start_url: "https://next-pwa.herokuapp.com",
+      icons: [
+        {
+          src: "https://next-pwa.herokuapp.com/icons/icon-192x192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          src: "https://next-pwa.herokuapp.com/icons/icon-384x384.png",
+          sizes: "384x384",
+          type: "image/png",
+        },
+        {
+          src: "https://next-pwa.herokuapp.com/icons/icon-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+      ],
+      splash_pages: null,
+    };
+  
+    //   // const manifestElement = document.getElementById("manifest");
+      const stringManifest = JSON.stringify(manifestJson)
+      let node = document.createElement('link');
+      node.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(stringManifest))
+      node.rel = 'manifest';
+      document.getElementsByTagName('head')[0].appendChild(node); 
 
     window.addEventListener("beforeinstallprompt", (e) => {
       console.log("BEFOREINSTALLPROMPT");
@@ -46,7 +81,7 @@ const Home = (props) => {
   return (
     <>
     <Head>
-    <link rel="manifest" id="manifest" href={props.hi} />
+    {/* <link rel="manifest" id="manifest" href={props.hi} /> */}
     </Head>
     <div className="App">
       <header className="App-header">
@@ -65,40 +100,10 @@ const Home = (props) => {
   );
 }
 
-Home.getInitialProps = (context, client) => {
-  console.log("INITIAL PROPS");
-  const manifestJson = {
-    name: "TEST PWA 2",
-    short_name: "TES",
-    theme_color: "#ffffff",
-    background_color: "#004740",
-    display: "fullscreen",
-    orientation: "portrait",
-    scope: "https://next-pwa.herokuapp.com",
-    start_url: "https://next-pwa.herokuapp.com",
-    icons: [
-      {
-        src: "https://next-pwa.herokuapp.com/icons/icon-192x192.png",
-        sizes: "192x192",
-        type: "image/png",
-      },
-      {
-        src: "https://next-pwa.herokuapp.com/icons/icon-384x384.png",
-        sizes: "384x384",
-        type: "image/png",
-      },
-      {
-        src: "https://next-pwa.herokuapp.com/icons/icon-512x512.png",
-        sizes: "512x512",
-        type: "image/png",
-      },
-    ],
-    splash_pages: null,
-  };
-
-  //   // const manifestElement = document.getElementById("manifest");
-    const stringManifest = JSON.stringify(manifestJson)
-    return {hi: 'data:application/json;charset=utf-8,' + encodeURIComponent(stringManifest)};
-}
+// Home.getInitialProps = (context, client) => {
+//   console.log("INITIAL PROPS");
+  
+//     return {hi: 'data:application/json;charset=utf-8,' + encodeURIComponent(stringManifest)};
+// }
 
 export default Home;
