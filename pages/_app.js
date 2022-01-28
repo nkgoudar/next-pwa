@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 export default function MyApp({ Component, pageProps }) {
   useEffect(() => {
-    if (true) {
+    if (false) {
       const manifestJson = {
         name: "TEST PWA 2",
         short_name: "TES",
