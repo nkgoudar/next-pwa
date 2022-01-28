@@ -77,21 +77,6 @@ Home.getInitialProps = (context, client) => {
     scope: "https://next-pwa.herokuapp.com",
     start_url: "https://next-pwa.herokuapp.com",
     icons: [
-      {
-        src: "icons/icon-192x192.png",
-        sizes: "192x192",
-        type: "image/png",
-      },
-      {
-        src: "icons/icon-384x384.png",
-        sizes: "384x384",
-        type: "image/png",
-      },
-      {
-        src: "icons/icon-512x512.png",
-        sizes: "512x512",
-        type: "image/png",
-      },
     ],
     splash_pages: null,
   };
