@@ -6,40 +6,42 @@ let deferredPrompt;
 const Home = (props) => {
   console.log(props)
   const [installable, setInstallable] = useState(false);
+  const [name, setName] = useState("");
 
+  const manifestJson = {
+    name: "TEST PWA 2",
+    short_name: "TES",
+    theme_color: "#ffffff",
+    background_color: "#004740",
+    display: "fullscreen",
+    orientation: "portrait",
+    scope: "https://next-pwa.herokuapp.com",
+    start_url: "https://next-pwa.herokuapp.com",
+    icons: [
+      {
+        src: "https://next-pwa.herokuapp.com/icons/icon-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        src: "https://next-pwa.herokuapp.com/icons/icon-384x384.png",
+        sizes: "384x384",
+        type: "image/png",
+      },
+      {
+        src: "https://next-pwa.herokuapp.com/icons/icon-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
+    splash_pages: null,
+  };
   useEffect(() => {
-    const manifestJson = {
-      name: "TEST PWA 2",
-      short_name: "TES",
-      theme_color: "#ffffff",
-      background_color: "#004740",
-      display: "fullscreen",
-      orientation: "portrait",
-      scope: "https://next-pwa.herokuapp.com",
-      start_url: "https://next-pwa.herokuapp.com",
-      icons: [
-        {
-          src: "https://next-pwa.herokuapp.com/icons/icon-192x192.png",
-          sizes: "192x192",
-          type: "image/png",
-        },
-        {
-          src: "https://next-pwa.herokuapp.com/icons/icon-384x384.png",
-          sizes: "384x384",
-          type: "image/png",
-        },
-        {
-          src: "https://next-pwa.herokuapp.com/icons/icon-512x512.png",
-          sizes: "512x512",
-          type: "image/png",
-        },
-      ],
-      splash_pages: null,
-    };
   
     //   // const manifestElement = document.getElementById("manifest");
       const stringManifest = JSON.stringify(manifestJson)
       let node = document.createElement('link');
+      node.setAttribute('id', 'manni')
       node.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(stringManifest))
       node.rel = 'manifest';
       document.getElementsByTagName('head')[0].appendChild(node); 
@@ -76,7 +78,16 @@ const Home = (props) => {
     });
   };
 
-
+  const nameSet = () => {
+    console.log(name);
+    manifestJson.name = name;
+    manifestJson.short_name = name;
+    const stringManifest = JSON.stringify(manifestJson)
+    let node = document.getElementById('manni');
+    node.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(stringManifest))
+    // node.rel = 'manifest';
+    // document.getElementsByTagName('head')[0].appendChild(node); 
+  }
 
   return (
     <>
@@ -86,6 +97,8 @@ const Home = (props) => {
     <div className="App">
       <header className="App-header">
         <h2>Install Demo</h2>
+        <input value={name} onChange={(e) => setName(e.target.value)}></input>
+        <button onClick={nameSet}>Set PWA app name</button>
         {installable && (
           <button className="install-button" onClick={handleInstallClick}>
             INSTALL ME
