@@ -46,7 +46,7 @@ const Home = (props) => {
   return (
     <>
     <Head>
-    <link rel="manifest" id="manifest" href="/manifest.json" />
+    <link rel="manifest" id="manifest" href={props.hi} />
     </Head>
     <div className="App">
       <header className="App-header">
