@@ -74,7 +74,7 @@ Home.getInitialProps = (context, client) => {
     background_color: "#004740",
     display: "fullscreen",
     orientation: "portrait",
-    scope: "/",
+    scope: "https://next-pwa.herokuapp.com",
     start_url: "https://next-pwa.herokuapp.com",
     icons: [
       {
